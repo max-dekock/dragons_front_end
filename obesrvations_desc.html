@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <title>Observations</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+      function showform(dowhat) {
+        /*
+         * four DIVS: browse, insert, update, delete
+         * this function sets one visible the others not
+         */
+        if (dowhat == "insert") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "update") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "delete") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "block";
+        } else if (dowhat == "all") {
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "block";
+        } else {
+          //by default display browse
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        }
+      }
+      function newObservation_Description() {
+        showform("insert");
+      }
+      function updateObservation_Description(vid) {
+        showform("update");
+      }
+      function deleteObservation_Description(vid) {
+        showform("delete");
+      }
+      function browseObservation_Description() {
+        showform("browse");
+      }
+      function showAll() {
+        showform("all");
+      }
+    </script>
+  </head>
+
+  <body onload="browseObservation_Description()">
+    <h1>Observations_Desc</h1>
+
+    [ <a href="analysts.html">Analysts</a> |
+    <a href="volunteers.html">Volunteers</a> |
+    <a href="dragons.html">Dragons</a> | <a href="sizes.html">Sizes</a> |
+    <a href="dragon_confirmed_sightings.html">Dragon_Confirmed_Sightings</a> |
+    <a href="confirmed_sightings.html">Confirmed_Sightings</a> |
+    <a href="observations.html">Observations</a> |
+    <a href="obesrvations_desc.html">Observations_Desc</a> |]
+
+    <div id="browse">
+      <p><a href="#" onClick="showAll()">Display all forms</a></p>
+      <table border="1" cellpadding="5">
+        <tr>
+          <th><a href="#" onClick="newObservation_Description()">New</a></th>
+          <th></th>
+          <th>id</th>
+          <th>observation_id</th>
+          <th>color</th>
+          <th>size_id</th>
+          <th>additional_notes</th>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="#"
+              onClick="updateObservation_Description('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              onclick="deleteObservations('this.observation_descriptionID')"
+              >Delete</a
+            >
+          </td>
+          <td>1</td>
+          <td>1</td>
+          <td align="right">blue</td>
+          <td>1</td>
+          <td>
+            dragon was spotted in what looks to be a nest on volano while
+            guarded by larger dragon
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="#"
+              onClick="updateObservation_Description('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              onclick="deleteObservations('this.observation_descriptionID')"
+              >Delete</a
+            >
+          </td>
+          <td>2</td>
+          <td>1</td>
+          <td align="right">green</td>
+          <td>3</td>
+          <td>
+            dragon had yellow spots throught its body and was flying around a
+            volanoe guarding a baby dragon
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="#"
+              onClick="updateObservation_Description('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              onclick="deleteObservations('this.observation_descriptionID')"
+              >Delete</a
+            >
+          </td>
+          <td>3</td>
+          <td>2</td>
+          <td align="right">black</td>
+          <td>5</td>
+          <td>
+            dragon had holes in left wing and large scar along back-right leg
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="#"
+              onClick="updateObservation_Description('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              onclick="deleteObservations('this.observation_descriptionID')"
+              >Delete</a
+            >
+          </td>
+          <td>4</td>
+          <td>3</td>
+          <td align="right">red</td>
+          <td>4</td>
+          <td>dragon had a very long neck, looked like a snake</td>
+        </tr>
+        <tr>
+          <td>
+            <a
+              href="#"
+              onClick="updateObservation_Description('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="#"
+              onclick="deleteObservations('this.observation_descriptionID')"
+              >Delete</a
+            >
+          </td>
+          <td>5</td>
+          <td>4</td>
+          <td align="right">white</td>
+          <td>5</td>
+          <td>
+            dragon had red eyes that contrasted it's white scales and was
+            camoflauged in the snowy peaks of a volcano
+          </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addObservation_Desc">
+        <legend><strong>Add Observation_Desc</strong></legend>
+        <fieldset class="fields">
+          <label> observation_id </label>
+          <input type="text" name="observation_id" />
+          <label> color </label>
+          <input type="text" name="color" />
+          <label> size_id </label>
+          <input type="text" name="size_id" />
+          <label> additional_notes </label>
+          <input type="text" name="additional_notes" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="addObservationDesc"
+          value="Add Observation_Desc"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservation_Description()"
+        />
+      </form>
+    </div>
+    <!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="updateObservation_Description">
+        <legend><strong>Update Observation_Desc</strong></legend>
+        <fieldset class="fields">
+          <input
+            type="hidden"
+            name="observation_descID"
+            id="updateobservation_descID"
+            value="1"
+          />
+          <label> ID: </label> 1 <label> observation_id </label>
+          <input type="text" name="observation_id" value="1" />
+          <label> color </label>
+          <input type="text" name="color" value="blue" />
+          <label> size_id </label>
+          <input type="text" name="size_id" value="1" />
+          <label> additional_notes </label>
+          <input
+            type="text"
+            name="additional_notes"
+            value="dragon was spotted in what looks to be a nest on volano while guarded by larger dragon"
+          />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="UpdateSaveObservation_desc"
+          value="Save Updated Observation_Desc"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservation_Description()"
+        />
+      </form>
+    </div>
+    <!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteObservation_Description">
+        <legend><strong>Delete Observation_Desc</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input
+            type="hidden"
+            name="observationsID"
+            id="deleteobservationsID"
+            value="1"
+          />
+          <label><strong>ID:</strong></label> 1
+          <label> <strong>observation_id</strong> </label> 1
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="deleteObservation_Description"
+          value="Delete Observation_Desc"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservation_Description()"
+        />
+      </form>
+    </div>
+    <!-- delete -->
+  </body>
+</html>

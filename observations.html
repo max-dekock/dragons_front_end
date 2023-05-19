@@ -1,0 +1,237 @@
+<html>
+  <head>
+    <title>Observations</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+      function showform(dowhat) {
+        /*
+         * four DIVS: browse, insert, update, delete
+         * this function sets one visible the others not
+         */
+        if (dowhat == "insert") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "update") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "delete") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "block";
+        } else if (dowhat == "all") {
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "block";
+        } else {
+          //by default display browse
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        }
+      }
+      function newObservations() {
+        showform("insert");
+      }
+      function updateObservations(vid) {
+        showform("update");
+      }
+      function deleteObservations(vid) {
+        showform("delete");
+      }
+      function browseObservations() {
+        showform("browse");
+      }
+      function showAll() {
+        showform("all");
+      }
+    </script>
+  </head>
+
+  <body onload="browseObservations()">
+    <h1>Observations</h1>
+
+    [ <a href="analysts.html">Analysts</a> |
+    <a href="volunteers.html">Volunteers</a> |
+    <a href="dragons.html">Dragons</a> | <a href="sizes.html">Sizes</a> |
+    <a href="dragon_confirmed_sightings.html">Dragon_Confirmed_Sightings</a> |
+    <a href="confirmed_sightings.html">Confirmed_Sightings</a> |
+    <a href="observations.html">Observations</a> |
+    <a href="obesrvations_desc.html">Observations_Desc</a> |]
+
+    <div id="browse">
+      <p><a href="#" onClick="showAll()">Display all forms</a></p>
+      <table border="1" cellpadding="5">
+        <tr>
+          <th><a href="#" onClick="newObservations()">New</a></th>
+          <th></th>
+          <th>id</th>
+          <th>volunteer_id</th>
+          <th>observation_time</th>
+          <th>location</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateObservations('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a href="#" onclick="deleteObservations('this.observationsID')"
+              >Delete</a
+            >
+          </td>
+          <td>1</td>
+          <td>3</td>
+          <td align="right">2022-11-15 00:00:00</td>
+          <td>POINT(135.3 100.5)</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateObservations('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a href="#" onclick="deleteObservations('this.observationsID')"
+              >Delete</a
+            >
+          </td>
+          <td>2</td>
+          <td>1</td>
+          <td align="right">2023-01-05 00:00:00</td>
+          <td>POINT(321.5 358.9)</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateObservations('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a href="#" onclick="deleteObservations('this.observationsID')"
+              >Delete</a
+            >
+          </td>
+          <td>3</td>
+          <td>2</td>
+          <td align="right">2023-04-23 00:00:00</td>
+          <td>POINT(837.6 592.9)</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateObservations('this.observationsID')"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a href="#" onclick="deleteObservations('this.observationsID')"
+              >Delete</a
+            >
+          </td>
+          <td>4</td>
+          <td>3</td>
+          <td align="right">2023-05-01 00:00:00</td>
+          <td>POINT(914.9 674.3)</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addObservation">
+        <legend><strong>Add Observation</strong></legend>
+        <fieldset class="fields">
+          <label> volunteer_id </label>
+          <input type="text" name="volunteer_id" />
+          <label> observation_time </label>
+          <input type="text" name="observation_time" />
+          <label> location </label>
+          <input type="text" name="location" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="addObservation"
+          value="Add Observation"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservations()"
+        />
+      </form>
+    </div>
+    <!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="updateObservations">
+        <legend><strong>Update Observation</strong></legend>
+        <fieldset class="fields">
+          <input
+            type="hidden"
+            name="observationsID"
+            id="updateobservationsID"
+            value="1"
+          />
+          <label> ID: </label> 1 <label> volunteer_id </label>
+          <input type="text" name="fname" value="3" />
+          <label> observation_time </label>
+          <input type="text" name="lname" value="2022-11-15 00:00:00" />
+          <label> location </label>
+          <input type="text" name="email" value="135.3 100.5" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="UpdateSaveObservation"
+          value="Save Updated Observation"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservations()"
+        />
+      </form>
+    </div>
+    <!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteObservations">
+        <legend><strong>Delete Observations</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input
+            type="hidden"
+            name="observationsID"
+            id="deleteobservationsID"
+            value="1"
+          />
+          <label><strong>ID:</strong></label> 1
+          <label> <strong>volunteer_id</strong> </label> 3
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="DeleteObservations"
+          value="Delete Observations"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseObservations()"
+        />
+      </form>
+    </div>
+    <!-- delete -->
+  </body>
+</html>

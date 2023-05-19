@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <title>Volunteers</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+      function showform(dowhat) {
+        /*
+         * four DIVS: browse, insert, update, delete
+         * this function sets one visible the others not
+         */
+        if (dowhat == "insert") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "update") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "delete") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "block";
+        } else if (dowhat == "all") {
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "block";
+        } else {
+          //by default display browse
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        }
+      }
+      function newVolunteers() {
+        showform("insert");
+      }
+      function updateVolunteers(vid) {
+        showform("update");
+      }
+      function deleteVolunteers(vid) {
+        showform("delete");
+      }
+      function browseVolunteers() {
+        showform("browse");
+      }
+      function showAll() {
+        showform("all");
+      }
+    </script>
+  </head>
+
+  <body onload="browseVolunteers()">
+    <h1>Volunteers</h1>
+
+    [ <a href="analysts.html">Analysts</a> |
+    <a href="volunteers.html">Volunteers</a> |
+    <a href="dragons.html">Dragons</a> | <a href="sizes.html">Sizes</a> |
+    <a href="dragon_confirmed_sightings.html">Dragon_Confirmed_Sightings</a> |
+    <a href="confirmed_sightings.html">Confirmed_Sightings</a> |
+    <a href="observations.html">Observations</a> |
+    <a href="obesrvations_desc.html">Observations_Desc</a> |]
+
+    <div id="browse">
+      <p><a href="#" onClick="showAll()">Display all forms</a></p>
+      <table border="1" cellpadding="5">
+        <tr>
+          <th><a href="#" onClick="newVolunteers()">New</a></th>
+          <th></th>
+          <th>id</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateVolunteers('this.volunteersID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteVolunteers('this.volunteersID')"
+              >Delete</a
+            >
+          </td>
+          <td>1</td>
+          <td>Tyrion</td>
+          <td align="right">Lannister</td>
+          <td>bblion@gmail.com</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateVolunteers('this.volunteersID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteVolunteers('this.volunteersID')"
+              >Delete</a
+            >
+          </td>
+          <td>2</td>
+          <td>Joffrey</td>
+          <td align="right">Baratheon</td>
+          <td>ih8cake@yahoo.com</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateVolunteers('this.volunteersID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteVolunteers('this.volunteersID')"
+              >Delete</a
+            >
+          </td>
+          <td>3</td>
+          <td>Jaqen</td>
+          <td align="right">H'ghar</td>
+          <td>notmyname@hotmail.com</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addVolunteer">
+        <legend><strong>Add Volunteer</strong></legend>
+        <fieldset class="fields">
+          <label> first name </label> <input type="text" name="fname" />
+          <label> last name </label> <input type="text" name="lname" />
+          <label> email </label> <input type="text" name="email" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="addvolunteer"
+          value="Add Volunteer"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseVolunteers()"
+        />
+      </form>
+    </div>
+    <!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="UpdateVolunteers">
+        <legend><strong>Update Volunteers</strong></legend>
+        <fieldset class="fields">
+          <input
+            type="hidden"
+            name="volunteersID"
+            id="updatevolunteersID"
+            value="1"
+          />
+          <label> ID: </label> 1 <label> first name </label>
+          <input type="text" name="fname" value="Joffrey" />
+          <label> last name </label>
+          <input type="text" name="lname" value="Baratheon" />
+          <label> email </label>
+          <input type="text" name="email" value="ih8cake@yahoo.com" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="UpdateSaveVolunteer"
+          value="Save Update Volunteer"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseVolunteers()"
+        />
+      </form>
+    </div>
+    <!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteVolunteers">
+        <legend><strong>Delete Volunteers</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input
+            type="hidden"
+            name="volunteersID"
+            id="deletevolunteersID"
+            value="1"
+          />
+          <label><strong>ID:</strong></label> 1
+          <label> <strong>Name</strong> </label> Tyrion Lannister
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="DeleteVolunteers"
+          value="Delete Volunteers"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseVolunteers()"
+        />
+      </form>
+    </div>
+    <!-- delete -->
+  </body>
+</html>

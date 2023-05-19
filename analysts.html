@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <title>Analysts</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+      function showform(dowhat) {
+        /*
+         * four DIVS: browse, insert, update, delete
+         * this function sets one visible the others not
+         */
+        if (dowhat == "insert") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "update") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "delete") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "block";
+        } else if (dowhat == "all") {
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "block";
+        } else {
+          //by default display browse
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        }
+      }
+      function newAnalysts() {
+        showform("insert");
+      }
+      function updateAnalysts(aid) {
+        showform("update");
+      }
+      function deleteAnalysts(aid) {
+        showform("delete");
+      }
+      function browseAnalysts() {
+        showform("browse");
+      }
+      function showAll() {
+        showform("all");
+      }
+    </script>
+  </head>
+
+  <body onload="browseAnalysts()">
+    <h1>Analysts</h1>
+
+    [ <a href="analysts.html">Analysts</a> |
+    <a href="volunteers.html">Volunteers</a> |
+    <a href="dragons.html">Dragons</a> | <a href="sizes.html">Sizes</a> |
+    <a href="dragon_confirmed_sightings.html">Dragon_Confirmed_Sightings</a> |
+    <a href="confirmed_sightings.html">Confirmed_Sightings</a> |
+    <a href="observations.html">Observations</a> |
+    <a href="obesrvations_desc.html">Observations_Desc</a> |]
+
+    <div id="browse">
+      <p><a href="#" onClick="showAll()">Display all forms</a></p>
+      <table border="1" cellpadding="5">
+        <tr>
+          <th><a href="#" onClick="newAnalysts()">New</a></th>
+          <th></th>
+          <th>id</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateAnalysts('this.analystsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteAnalysts('this.analystsID')">Delete</a>
+          </td>
+          <td>1</td>
+          <td>David</td>
+          <td align="right">Benioff</td>
+          <td>dbenioff@hbo.com</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateAnalysts('this.analystsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteAnalysts('this.analystsID')">Delete</a>
+          </td>
+          <td>2</td>
+          <td>D.B</td>
+          <td align="right">Weiss</td>
+          <td>dbweiss@hbo.com</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateAnalysts('this.analystsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteAnalysts('this.analystsID')">Delete</a>
+          </td>
+          <td>3</td>
+          <td>George</td>
+          <td align="right">Martin</td>
+          <td>itllbedonewhenitsdone@aol.com</td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addAnalyst">
+        <legend><strong>Add Analyst</strong></legend>
+        <fieldset class="fields">
+          <label> first name </label> <input type="text" name="fname" />
+          <label> last name </label> <input type="text" name="lname" />
+          <label> email </label> <input type="text" name="email" />
+        </fieldset>
+        <input class="btn" type="submit" id="addanalyst" value="Add Analyst" />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browsePeople()"
+        />
+      </form>
+    </div>
+    <!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="UpdateAnalysts">
+        <legend><strong>Update Analysts</strong></legend>
+        <fieldset class="fields">
+          <input
+            type="hidden"
+            name="analystsID"
+            id="updateanalystsID"
+            value="1"
+          />
+          <label> ID: </label> 1 <label> first name </label>
+          <input type="text" name="fname" value="David" />
+          <label> last name </label>
+          <input type="text" name="lname" value="Benioff" />
+          <label> email </label>
+          <input type="text" name="email" value="dbenioff@hbo.com" />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="UpdateSaveAnalyst"
+          value="Save Update Analyst"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseAnalysts()"
+        />
+      </form>
+    </div>
+    <!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteAnalysts">
+        <legend><strong>Delete Analysts</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input
+            type="hidden"
+            name="analystsID"
+            id="deleteanalystsID"
+            value="1"
+          />
+          <label><strong>ID:</strong></label> 1
+          <label> <strong>Name</strong> </label> David Benioff
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="DeleteAnalysts"
+          value="Delete Analysts"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseAnalysts()"
+        />
+      </form>
+    </div>
+    <!-- delete -->
+  </body>
+</html>

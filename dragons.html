@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <title>Dragons</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript">
+      function showform(dowhat) {
+        /*
+         * four DIVS: browse, insert, update, delete
+         * this function sets one visible the others not
+         */
+        if (dowhat == "insert") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "update") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "none";
+        } else if (dowhat == "delete") {
+          document.getElementById("browse").style.display = "none";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "block";
+        } else if (dowhat == "all") {
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "block";
+          document.getElementById("update").style.display = "block";
+          document.getElementById("delete").style.display = "block";
+        } else {
+          //by default display browse
+          document.getElementById("browse").style.display = "block";
+          document.getElementById("insert").style.display = "none";
+          document.getElementById("update").style.display = "none";
+          document.getElementById("delete").style.display = "none";
+        }
+      }
+      function newDragons() {
+        showform("insert");
+      }
+      function updateDragons(did) {
+        showform("update");
+      }
+      function deleteDragons(did) {
+        showform("delete");
+      }
+      function browseDragons() {
+        showform("browse");
+      }
+      function showAll() {
+        showform("all");
+      }
+    </script>
+  </head>
+
+  <body onload="browseDragons()">
+    <h1>Dragons</h1>
+
+    [ <a href="analysts.html">Analysts</a> |
+    <a href="volunteers.html">Volunteers</a> |
+    <a href="dragons.html">Dragons</a> | <a href="sizes.html">Sizes</a> |
+    <a href="dragon_confirmed_sightings.html">Dragon_Confirmed_Sightings</a> |
+    <a href="confirmed_sightings.html">Confirmed_Sightings</a> |
+    <a href="observations.html">Observations</a> |
+    <a href="obesrvations_desc.html">Observations_Desc</a> |]
+
+    <div id="browse">
+      <p><a href="#" onClick="showAll()">Display all forms</a></p>
+      <table border="1" cellpadding="5">
+        <tr>
+          <th><a href="#" onClick="newDragons()">New</a></th>
+          <th></th>
+          <th>id</th>
+          <th>nickname</th>
+          <th>sex</th>
+          <th>color</th>
+          <th>length</th>
+          <th>wingspan</th>
+          <th>hatch_year</th>
+          <th>identifying_marks</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateDragons('this.dragonsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteDragons('this.dragonsID')">Delete</a>
+          </td>
+          <td>1</td>
+          <td>Glacier</td>
+          <td align="right">Female</td>
+          <td>White</td>
+          <td>215</td>
+          <td>175</td>
+          <td>1873</td>
+          <td>
+            Gracier is the only white dragon with red eyes identifyied so far.
+            It is also the largest. When not covered by snow, you can see it's
+            white scales also have a blueish hue.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateDragons('this.dragonsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteDragons('this.dragonsID')">Delete</a>
+          </td>
+          <td>2</td>
+          <td>Blu</td>
+          <td align="right">Male</td>
+          <td>Blue</td>
+          <td>5</td>
+          <td>3</td>
+          <td>2022</td>
+          <td>
+            Blu is a baby blue dragon with yellow scales on its undercarriage.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateDragons('this.dragonsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteDragons('this.dragonsID')">Delete</a>
+          </td>
+          <td>3</td>
+          <td>Citronelle</td>
+          <td align="right">Female</td>
+          <td>Green</td>
+          <td>85</td>
+          <td>70</td>
+          <td>2001</td>
+          <td>
+            Citronelle has green scales with yellow spots. It also has blue
+            eyes.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateDragons('this.dragonsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteDragons('this.dragonsID')">Delete</a>
+          </td>
+          <td>4</td>
+          <td>Cinder</td>
+          <td align="right">Male</td>
+          <td>Red</td>
+          <td>120</td>
+          <td>95</td>
+          <td>1990</td>
+          <td>
+            Cinder has a very long neck and tail which make it look like a
+            snake. It's also missing 1 of its 5 toes on its rear-left foot.
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#" onClick="updateDragons('this.dragonsID')">Edit</a>
+          </td>
+          <td>
+            <a href="#" onclick="deleteDragons('this.dragonsID')">Delete</a>
+          </td>
+          <td>5</td>
+          <td>Noir</td>
+          <td align="right">Male</td>
+          <td>Black</td>
+          <td>150</td>
+          <td>125</td>
+          <td>1774</td>
+          <td>
+            Noir is a very violent dragon that sometimes preys on other dragons.
+            Due to its nature, it has been involved in several fights leading to
+            holes in its wings and a great scar on its hind-right leg from a
+            lost battle.
+          </td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </div>
+    <!-- browse -->
+    <div id="insert">
+      <form method="POST" id="addDragon">
+        <legend><strong>Add Dragon</strong></legend>
+        <fieldset class="fields">
+          <label> nickname </label> <input type="text" name="nickname" />
+          <label> sex </label> <input type="text" name="sex" />
+          <label> color </label> <input type="text" name="color" />
+          <label> length </label> <input type="text" name="length" />
+          <label> wingspan </label> <input type="text" name="wingspan" />
+          <label> hatch_year </label> <input type="text" name="hatch_year" />
+          <label> identifying_marks </label>
+          <input type="text" name="identifying_marks" />
+        </fieldset>
+        <input class="btn" type="submit" id="adddragon" value="Add Dragon" />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseDragons()"
+        />
+      </form>
+    </div>
+    <!-- insert -->
+    <p>&nbsp;</p>
+    <div id="update">
+      <form method="POST" id="updateDragons">
+        <legend><strong>Update Dragons</strong></legend>
+        <fieldset class="fields">
+          <input
+            type="hidden"
+            name="dragonsID"
+            id="updatedragonsID"
+            value="1"
+          />
+          <label> ID: </label> 1 <label> nickname </label>
+          <input type="text" name="nickname" value="Glacier" />
+          <label> sex </label>
+          <input type="text" name="sex" value="female" />
+          <label> color </label>
+          <input type="text" name="color" value="white" />
+          <label> length </label>
+          <input type="text" name="length" value="215" />
+          <label> wingspan </label>
+          <input type="text" name="wingspan" value="175" />
+          <label> hatch_year </label>
+          <input type="text" name="hatch_year" value="1873" />
+          <label> identifying_marks </label>
+          <input
+            type="text"
+            name="identifying_marks"
+            value="Gracier is the only white dragon with red eyes identifyied so far. It is also the largest. When not covered by snow, you can see it's white scales also have a blueish hue."
+          />
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="UpdateSaveDragon"
+          value="Save Update Dragon"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseDragons()"
+        />
+      </form>
+    </div>
+    <!-- update -->
+    <p>&nbsp;</p>
+    <div id="delete" style="display: block">
+      <form method="POST" id="deleteDragons">
+        <legend><strong>Delete Dragons</strong></legend>
+        <fieldset class="fields">
+          <p>Are you sure you wish to delete the following?</p>
+          <input
+            type="hidden"
+            name="dragonsID"
+            id="deletedragonsID"
+            value="1"
+          />
+          <label><strong>ID:</strong></label> 1
+          <label> <strong>Name</strong> </label> Glacier
+        </fieldset>
+        <input
+          class="btn"
+          type="submit"
+          id="DeleteDragons"
+          value="Delete Dragons"
+        />
+        <input
+          class="btn"
+          type="button"
+          value="cancel"
+          onClick="browseDragons()"
+        />
+      </form>
+    </div>
+    <!-- delete -->
+  </body>
+</html>
